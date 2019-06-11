@@ -16,7 +16,8 @@ class NumberToValidWord
 		number_array = convert_input_to_array(input_number)
 		array_of_characters = convert_array_of_numbers_to_array_of_characters(number_array)
 		all_possible_combination_of_input = possible_combination_of_given_number(array_of_characters)
-		p all_possible_combination_of_input
+		required_array_of_words = all_possible_combination_of_input.select{|each_array| each_array.present?}.flatten
+		p required_array_of_words
 	end
 
 	def convert_the_dictionary_to_array
