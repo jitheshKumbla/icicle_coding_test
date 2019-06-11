@@ -16,8 +16,9 @@ class NumberToValidWord
 		p valid_words_dictionary.count
 		number_array = convert_input_to_array(input_number)
 		array_of_characters = convert_array_of_numbers_to_array_of_characters(number_array)
+		p "a" * 10
 	    p array_of_characters
-	    
+
 	end
 
 	def convert_the_dictionary_to_array
@@ -31,12 +32,14 @@ class NumberToValidWord
 	end
 
 	def convert_input_to_array(input)
-		number_array = number.split("")
+		number_array = input.split("")
 	end
 
 	def convert_array_of_numbers_to_array_of_characters(input_number)
-		mapped_input_digits_to_letters_array = input_number.chars.map{|digit| MAPPED_NUMBERS_TO_LETTERS[digit] }
+		mapped_input_digits_to_letters_array = input_number.map{|digit| MAPPED_NUMBERS_TO_LETTERS[digit] }
 	end
+
+	#Find all possible combination of the words based on the keys
 
 
 end
