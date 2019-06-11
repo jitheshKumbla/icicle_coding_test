@@ -50,9 +50,12 @@ class NumberToValidWord
 
 	#Loop to get minimum 3 letters words
 	def get_meaningful_combination_of_words(possible_combinations_of_words)
-		while 1 do 
-			#get list of words with 3 letters
-			word_combinations = possible_combinations_of_words.map{|word| word[0..2]}
+		
+		for i in 2..7 
+			
+			word_combinations = possible_combinations_of_words.map{|word| word[0..i]}
+			shift_each_characters = possible_combinations_of_words.map{|word| word[i+1 ..-1]}
+			
 		end
 	end
 
