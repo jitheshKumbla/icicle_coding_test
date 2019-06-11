@@ -12,11 +12,11 @@ class NumberToValidWord
 	def convert_number_to_valid_array_of_words(input_number)
 		return "Please enter a valid number" if input_number.blank? || input_number.length < 10 
 
-		valid_words_dictionary = convert_the_dictionary_to_array()
+		@valid_words_dictionary = convert_the_dictionary_to_array()
 		number_array = convert_input_to_array(input_number)
 		array_of_characters = convert_array_of_numbers_to_array_of_characters(number_array)
-		all_possible_combination_of_input_mapped_letters_of_array = possible_combination_of_given_number(array_of_characters)
-		p all_possible_combination_of_input_mapped_letters_of_array
+		all_possible_combination_of_input = possible_combination_of_given_number(array_of_characters)
+		p all_possible_combination_of_input
 	end
 
 	def convert_the_dictionary_to_array
@@ -45,18 +45,23 @@ class NumberToValidWord
 		rescue TypeError
 			return "Invalid entry. May contain either 1's or 0's. Please chech the input"
 		end
-		get_meaningful_combination_of_words(possible_combinations_of_words)
+		total_word_combination = get_meaningful_combination_of_words(possible_combinations_of_words)
+		total_word_combination
 	end
 
 	#Loop to get minimum 3 letters words
 	def get_meaningful_combination_of_words(possible_combinations_of_words)
-		
+		total_word_combination = []
 		for i in 2..7 
 			
 			word_combinations = possible_combinations_of_words.map{|word| word[0..i]}
 			shift_each_characters = possible_combinations_of_words.map{|word| word[i+1 ..-1]}
-			
+			track_word_combination_from_dictionary = @valid_words_dictionary & word_combinations
+			track_shift_each_characters_from_dictionary = @valid_words_dictionary & shift_each_characters			
+			total_word_combination << track_word_combination_from_dictionary
+			total_word_combination << track_shift_each_characters_from_dictionary
 		end
+		total_word_combination
 	end
 
 end
