@@ -13,12 +13,10 @@ class NumberToValidWord
 		return "Please enter a valid number" if input_number.blank? || input_number.length < 10 
 
 		valid_words_dictionary = convert_the_dictionary_to_array()
-		p valid_words_dictionary.count
 		number_array = convert_input_to_array(input_number)
 		array_of_characters = convert_array_of_numbers_to_array_of_characters(number_array)
-		p "a" * 10
-	    p array_of_characters
-
+		all_possible_combination_of_input_mapped_letters_of_array = possible_combination_of_given_number(array_of_characters)
+		p all_possible_combination_of_input_mapped_letters_of_array
 	end
 
 	def convert_the_dictionary_to_array
@@ -40,6 +38,14 @@ class NumberToValidWord
 	end
 
 	#Find all possible combination of the words based on the keys
-
+	#returns all possible combinations of INVALID words
+	def possible_combination_of_given_number(array_of_characters)
+		begin
+      		possible_combinations_of_words = array_of_characters.shift.product(*array_of_characters).map(&:join)
+		rescue TypeError
+			return "Invalid entry. May contain either 1's or 0's. Please chech the input"
+		end
+		possible_combinations_of_words
+	end
 
 end
