@@ -45,7 +45,15 @@ class NumberToValidWord
 		rescue TypeError
 			return "Invalid entry. May contain either 1's or 0's. Please chech the input"
 		end
-		possible_combinations_of_words
+		get_meaningful_combination_of_words(possible_combinations_of_words)
+	end
+
+	#Loop to get minimum 3 letters words
+	def get_meaningful_combination_of_words(possible_combinations_of_words)
+		while 1 do 
+			#get list of words with 3 letters
+			word_combinations = possible_combinations_of_words.map{|word| word[0..2]}
+		end
 	end
 
 end
